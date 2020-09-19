@@ -1,0 +1,17 @@
+C:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.csprojAssemblyReference.cache
+C:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.csproj.CoreCompileInputs.cache
+C:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.AssemblyInfoInputs.cache
+C:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.AssemblyInfo.cs
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\XUnitTests.deps.json
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\XUnitTests.runtimeconfig.json
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\XUnitTests.runtimeconfig.dev.json
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\XUnitTests.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\XUnitTests.pdb
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\SQLQueriesHelper.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\bin\Debug\netcoreapp2.1\SQLQueriesHelper.pdb
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.csproj.CopyComplete
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.dll
+c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\XUnitTests\obj\Debug\netcoreapp2.1\XUnitTests.pdb
