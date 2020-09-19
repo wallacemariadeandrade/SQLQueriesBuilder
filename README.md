@@ -1,2 +1,2 @@
 # SQLQueriesHelper
-A class library for a programmatic way to write SQL statements.
+A fluent way to write out your SQL statements.
