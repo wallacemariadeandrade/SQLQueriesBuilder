@@ -1,7 +1,9 @@
 # SQLQueriesHelper
 A fluent way to write out your SQL statements.
 
-## Inserts Examples
+## Examples
+
+### How to insert
 
 ```c#
 
@@ -22,6 +24,26 @@ var insertExample2 = SQLQueriesBuilder
   .Builder()
   .Build();
   
+```
+
+### How to select
+
+```c#
+
+// SELECT * FROM FOO
+var selectExample1 = SQLQueriesBuilder
+  .SelectAllFrom("FOO")
+  .Builder()
+  .Build();
+
+
+// SELECT Id, Name, Price FROM Products 
+var selectExample2 = SQLQueriesBuilder
+  .SelectFrom("Products")
+  .Columns("Id", "Name", "Price")
+  .Builder()
+  .Build();
+
 ```
 
 ## Versions
