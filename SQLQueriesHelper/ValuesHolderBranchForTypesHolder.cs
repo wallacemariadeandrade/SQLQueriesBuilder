@@ -19,7 +19,7 @@ namespace SQLQueriesHelper
                         _valuesTypes = types;
                     }
 
-                    public SQLQueriesBuilder Builder() => new SQLQueriesBuilder(this);
+                    public SQLQueriesBuilder Builder() => new SQLInsertQueriesBuilder(this);
                 }
             }
         }

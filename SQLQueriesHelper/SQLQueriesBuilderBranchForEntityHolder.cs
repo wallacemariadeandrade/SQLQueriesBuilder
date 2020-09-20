@@ -1,6 +1,6 @@
 namespace SQLQueriesHelper
 {
-    public partial class SQLQueriesBuilder
+    public abstract partial class SQLQueriesBuilder
     {
         public partial class EntityHolder
         {
@@ -16,7 +16,7 @@ namespace SQLQueriesHelper
 
             public ColumnsHolder Columns(params string[] columnsNames) => new ColumnsHolder(this, columnsNames);
 
-            public SQLQueriesBuilder Builder() => new SQLQueriesBuilder(this);
+            public SQLQueriesBuilder Builder() => new SQLSelectQueriesBuilder(this);
         }
     }
 }

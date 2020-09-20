@@ -8,7 +8,7 @@ namespace XUnitTests
         [Fact]
         public void SelectAllColumns()
         {
-            var query = SQLQueriesBuilder
+            var query = SQLSelectQueriesBuilder
                 .SelectAllFrom("Foo")
                 .Builder()
                 .Build();
@@ -20,7 +20,7 @@ namespace XUnitTests
         public void SelectEspecifyingColumns()
         {
             var expected = "SELECT COLUMN1, COLUMN2, COLUMN3 FROM FOO";
-            var query = SQLQueriesBuilder
+            var query = SQLSelectQueriesBuilder
                 .SelectFrom("FOO")
                 .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .Builder()

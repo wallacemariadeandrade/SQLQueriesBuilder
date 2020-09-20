@@ -9,7 +9,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsText()
         {
-            var query = SQLQueriesBuilder
+            var query = SQLInsertQueriesBuilder
                 .InsertAt("Foo")
                 .WithValues("A", "B", "C")
                 .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
@@ -22,7 +22,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsNonText()
         {
-            var query = SQLQueriesBuilder
+            var query = SQLInsertQueriesBuilder
                 .InsertAt("Foo")
                 .WithValues("A", "B", "C")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
@@ -35,7 +35,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsTextAndWithDifferentTypes()
         {
-            var query = SQLQueriesBuilder
+            var query = SQLInsertQueriesBuilder
                 .InsertAt("Foo")
                 .WithValues("A", "B", "C")
                 .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
@@ -50,7 +50,7 @@ namespace XUnitTests
         {
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLQueriesBuilder
+                    SQLInsertQueriesBuilder
                     .InsertAt("Foo")
                     .WithValues("A", "B")
                     .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
@@ -61,7 +61,7 @@ namespace XUnitTests
             
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLQueriesBuilder
+                    SQLInsertQueriesBuilder
                     .InsertAt("Foo")
                     .WithValues("A", "B", "C")
                     .As(ColumnTypes.Text, ColumnTypes.NonText)
@@ -72,7 +72,7 @@ namespace XUnitTests
 
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLQueriesBuilder
+                    SQLInsertQueriesBuilder
                     .InsertAt("Foo")
                     .Columns("FOO1", "FOO2")
                     .WithValues("A", "B", "C")
@@ -84,7 +84,7 @@ namespace XUnitTests
 
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLQueriesBuilder
+                    SQLInsertQueriesBuilder
                     .InsertAt("Foo")
                     .Columns("FOO1", "FOO2", "FOO3")
                     .WithValues("A", "B")
@@ -98,7 +98,8 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsTextAndEspecifyingColumns()
         {
-            var query = SQLQueriesBuilder.InsertAt("TABLE")
+            var query = SQLInsertQueriesBuilder
+                .InsertAt("TABLE")
                 .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
@@ -111,7 +112,8 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsNonTextAndEspecifyingColumns()
         {
-            var query = SQLQueriesBuilder.InsertAt("TABLE")
+            var query = SQLInsertQueriesBuilder
+                .InsertAt("TABLE")
                 .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
@@ -124,7 +126,8 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesFromDifferentTypesAndEspecifyingColumns()
         {
-            var query = SQLQueriesBuilder.InsertAt("TABLE")
+            var query = SQLInsertQueriesBuilder
+                .InsertAt("TABLE")
                 .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
