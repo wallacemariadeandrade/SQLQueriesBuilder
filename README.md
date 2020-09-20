@@ -5,6 +5,7 @@ A fluent way to write out your SQL statements.
 
 ```c#
 
+// INSERT INTO TABLE VALUES ('fOO1', FOO2, FOO3)
 var insertExample1 = SQLQueriesBuilder
   .InsertAt("TABLE")
   .WithValues("fOO1", "FOO2", "FOO3")
@@ -12,6 +13,7 @@ var insertExample1 = SQLQueriesBuilder
   .Builder()
   .Build();
 
+// INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, FOO3)
 var insertExample2 = SQLQueriesBuilder
   .InsertAt("TABLE")
   .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
