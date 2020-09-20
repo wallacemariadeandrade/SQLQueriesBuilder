@@ -14,7 +14,9 @@ namespace SQLQueriesHelper
 
             internal ValuesHolder WithValues(ColumnsHolder columns, params string[] valuesToInsert) => new ValuesHolder(this, columns, valuesToInsert);
 
-            public ColumnsHolder AtColumns(params string[] columnsNames) => new ColumnsHolder(this, columnsNames);
+            public ColumnsHolder Columns(params string[] columnsNames) => new ColumnsHolder(this, columnsNames);
+
+            public SQLQueriesBuilder Builder() => new SQLQueriesBuilder(this);
         }
     }
 }

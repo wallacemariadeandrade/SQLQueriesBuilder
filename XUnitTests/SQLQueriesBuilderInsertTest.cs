@@ -4,7 +4,7 @@ using Xunit;
 
 namespace XUnitTests
 {
-    public class SQLQueriesBuilderTest
+    public class SQLQueriesBuilderInsertTest
     {
         [Fact]
         public void InsertValuesAsText()
@@ -74,7 +74,7 @@ namespace XUnitTests
                 () => {
                     SQLQueriesBuilder
                     .InsertAt("Foo")
-                    .AtColumns("FOO1", "FOO2")
+                    .Columns("FOO1", "FOO2")
                     .WithValues("A", "B", "C")
                     .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
                     .Builder()
@@ -86,7 +86,7 @@ namespace XUnitTests
                 () => {
                     SQLQueriesBuilder
                     .InsertAt("Foo")
-                    .AtColumns("FOO1", "FOO2", "FOO3")
+                    .Columns("FOO1", "FOO2", "FOO3")
                     .WithValues("A", "B")
                     .As(ColumnTypes.Text, ColumnTypes.NonText)
                     .Builder()
@@ -99,7 +99,7 @@ namespace XUnitTests
         public void InsertValuesAsTextAndEspecifyingColumns()
         {
             var query = SQLQueriesBuilder.InsertAt("TABLE")
-                .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
+                .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
                 .Builder()
@@ -112,7 +112,7 @@ namespace XUnitTests
         public void InsertValuesAsNonTextAndEspecifyingColumns()
         {
             var query = SQLQueriesBuilder.InsertAt("TABLE")
-                .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
+                .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
                 .Builder()
@@ -125,7 +125,7 @@ namespace XUnitTests
         public void InsertValuesFromDifferentTypesAndEspecifyingColumns()
         {
             var query = SQLQueriesBuilder.InsertAt("TABLE")
-                .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
+                .Columns("COLUMN1", "COLUMN2", "COLUMN3")
                 .WithValues("fOO1", "FOO2", "FOO3")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
                 .Builder()

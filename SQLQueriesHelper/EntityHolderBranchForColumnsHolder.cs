@@ -19,6 +19,8 @@ namespace SQLQueriesHelper
                 }
 
                 public ValuesHolder WithValues(params string[] valuesToInsert) => _entity.WithValues(this, valuesToInsert);
+
+                public SQLQueriesBuilder Builder() => new SQLQueriesBuilder(this);
             }
         }
     }
