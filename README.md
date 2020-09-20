@@ -13,12 +13,12 @@ var insertExample1 = SQLQueriesBuilder
   .Builder()
   .Build();
 
-// INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, FOO3)
+// INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, 'FOO3')
 var insertExample2 = SQLQueriesBuilder
   .InsertAt("TABLE")
   .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
   .WithValues("fOO1", "FOO2", "FOO3")
-  .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
+  .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.Text)
   .Builder()
   .Build();
   
