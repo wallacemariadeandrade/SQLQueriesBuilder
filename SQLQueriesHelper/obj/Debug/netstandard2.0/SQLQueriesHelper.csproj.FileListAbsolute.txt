@@ -1,9 +1,0 @@
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\bin\Debug\netstandard2.0\SQLQueriesHelper.deps.json
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\bin\Debug\netstandard2.0\SQLQueriesHelper.dll
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\bin\Debug\netstandard2.0\SQLQueriesHelper.pdb
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.csprojAssemblyReference.cache
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.csproj.CoreCompileInputs.cache
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.AssemblyInfoInputs.cache
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.AssemblyInfo.cs
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.dll
-c:\Users\Wallace-K2 Telecom\source\repos\SQLQueriesHelper\SQLQueriesHelper\obj\Debug\netstandard2.0\SQLQueriesHelper.pdb

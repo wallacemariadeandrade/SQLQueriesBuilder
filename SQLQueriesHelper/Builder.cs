@@ -1,6 +1,6 @@
 namespace SQLQueriesHelper
 {
-    public abstract partial class SQLQueriesBuilder
+    public abstract class Builder
     {
         public abstract string Build();
     }

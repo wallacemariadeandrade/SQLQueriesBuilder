@@ -1,0 +1,5 @@
+.vscode/
+SQLQueriesHelper/bin/
+SQLQueriesHelper/obj/
+xUnitTests/bin
+xUnitTests/obj

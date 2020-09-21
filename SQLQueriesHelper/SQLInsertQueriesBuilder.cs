@@ -1,34 +1,66 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using static SQLQueriesHelper.SQLQueriesBuilder.EntityHolder.ValuesHolder;
 
 namespace SQLQueriesHelper
 {
-    public class SQLInsertQueriesBuilder : SQLQueriesBuilder
+    public class SQLInsertQueriesBuilder   
     {
-        private TypesHolder _types;
-        public SQLInsertQueriesBuilder(TypesHolder typesHolder)
+        public static IValuesAdder<ITypesAdderWithColumns<Builder>> InsertAt(string tableName)
         {
-             _types = typesHolder;
-            if(_types._valuesTypes.Count() != _types._values._valuesToInsert.Count()) 
-                throw new ArgumentOutOfRangeException("valuesToInsert, types", $"Number of provided values and types must be the same. It was provided {_types._values._valuesToInsert.Count()} values and {_types._valuesTypes.Count()} types.");
-            if(_types._values._columns != null)
-                if(_types._values._columns._names.Count() != _types._valuesTypes.Count())
-                    throw new ArgumentOutOfRangeException("columnsNames", $"Number of provided columns must be the same for values and types. It was provided {_types._values._valuesToInsert.Count()} values and {_types._valuesTypes.Count()} types but {_types._values._columns._names.Count()} columns.");
+            return new InsertWraper(tableName);
         }
 
-        public static EntityHolder InsertAt(string entityName) => new EntityHolder(entityName);
-
-        public override string Build()
+        internal class InsertWraper 
+        : Builder, IValuesAdder<ITypesAdderWithColumns<Builder>>, ITypesAdderWithColumns<Builder>
         {
-            var insertBegin = _types._values._columns == null ? $"INSERT INTO {_types._values._entity._name} VALUES (" : $"INSERT INTO {_types._values._entity._name} ({string.Join(", ", _types._values._columns._names)}) VALUES (";
-            var values = "";
-            for(int i =0; i < _types._valuesTypes.Count(); i++)
+            private string _tableName;
+            private IEnumerable<ColumnTypes> _types;
+            private IEnumerable<string> _columns;
+            private IEnumerable<string> _values;
+
+            internal InsertWraper(string tableName)
             {
-                var valueString = _types._valuesTypes.ElementAt(i) == ColumnTypes.Text ? $"'{_types._values._valuesToInsert.ElementAt(i)}'" : _types._values._valuesToInsert.ElementAt(i);
-                values += valueString + ", ";
-            }            
-            return insertBegin + values.Remove(values.Length-2) + ")";
+                _tableName = tableName;
+            }
+
+            public Builder As(params ColumnTypes[] types)
+            {
+                _types = types.AsEnumerable();
+                return this;
+            }
+
+            public ITypesAdder<Builder> AtColumns(params string[] columns)
+            {
+                _columns = columns.AsEnumerable();
+                return this;
+            }
+
+            public override string Build()
+            {
+                ValidateArguments();
+                var query = $"INSERT INTO {_tableName}";
+                if(_columns != null) query += $" ({string.Join(", ", _columns)})";
+                query += " VALUES (";
+                for(int i=0; i < _values.Count(); i++)
+                {
+                    var value = _types.ElementAt(i) == ColumnTypes.NonText ? _values.ElementAt(i) : $"'{_values.ElementAt(i)}'";
+                    query += $"{value}, ";
+                }
+                return query.Remove(query.Length - 2) + ")";
+            }
+
+            public ITypesAdderWithColumns<Builder> Values(params string[] values)
+            {
+                _values = values;
+                return this;
+            }
+
+            private void ValidateArguments()
+            {
+                if(_values.Count() != _types.Count()) throw new ArgumentOutOfRangeException();
+                if(_columns != null && _columns.Count() != _values.Count()) throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

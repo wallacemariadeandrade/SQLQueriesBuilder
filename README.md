@@ -7,43 +7,21 @@ A fluent way to write out your SQL statements.
 
 ```c#
 
-// INSERT INTO TABLE VALUES ('fOO1', FOO2, FOO3)
-var insertExample1 = SQLQueriesBuilder
-  .InsertAt("TABLE")
-  .WithValues("fOO1", "FOO2", "FOO3")
-  .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.NonText)
-  .Builder()
+// INSERT INTO Products VALUES ('Pen', 'Pencil', 'Eraser')
+var query1 = SQLInsertQueriesBuilder
+  .InsertAt("Products")
+  .Values("Pen", "Pencil", "Eraser")
+  .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
   .Build();
 
-// INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, 'FOO3')
-var insertExample2 = SQLQueriesBuilder
-  .InsertAt("TABLE")
-  .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
-  .WithValues("fOO1", "FOO2", "FOO3")
-  .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.Text)
-  .Builder()
+// INSERT INTO Employees (Id, Name, Age) VALUES (1, 'Wallace', 26)
+var query2 = SQLInsertQueriesBuilder
+  .InsertAt("Employees")
+  .Values("1", "Wallace", "26")
+  .AtColumns("Id", "Name", "Age")
+  .As(ColumnTypes.NonText, ColumnTypes.Text, ColumnTypes.NonText)
   .Build();
   
-```
-
-### How to select
-
-```c#
-
-// SELECT * FROM FOO
-var selectExample1 = SQLQueriesBuilder
-  .SelectAllFrom("FOO")
-  .Builder()
-  .Build();
-
-
-// SELECT Id, Name, Price FROM Products 
-var selectExample2 = SQLQueriesBuilder
-  .SelectFrom("Products")
-  .Columns("Id", "Name", "Price")
-  .Builder()
-  .Build();
-
 ```
 
 ## Versions
