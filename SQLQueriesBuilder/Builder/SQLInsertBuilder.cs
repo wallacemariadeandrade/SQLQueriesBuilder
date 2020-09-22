@@ -5,7 +5,7 @@ using SQLQueriesBuilder.FluentInterfaces;
 
 namespace SQLQueriesBuilder.Builder
 {
-    public class SQLInsertQueriesBuilder   
+    public static class SQLInsertBuilder   
     {
         public static IValuesAdder<ITypesAdderWithColumns<Builder>> InsertAt(string tableName)
         {

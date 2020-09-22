@@ -23,6 +23,17 @@ var query2 = SQLInsertQueriesBuilder
   .Build();
   
 ```
+### How to select
+
+```c#
+
+// SELECT ID, Name, Price FROM Products
+var selectQuery = SQLSelectBuilder
+    .Select("ID", "Name", "Price")
+    .From("Products")
+    .Build();
+
+```
 
 ## Versions
 

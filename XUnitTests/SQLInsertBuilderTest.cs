@@ -4,12 +4,12 @@ using SQLQueriesBuilder.Builder;
 
 namespace XUnitTests
 {
-    public class SQLQueriesBuilderInsertTest
+    public class SQLInsertBuilderTest
     {
         [Fact]
         public void InsertValuesAsText()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
                 .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
@@ -21,7 +21,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsNonText()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
                 .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
@@ -33,7 +33,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsTextAndWithDifferentTypes()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
                 .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
@@ -45,7 +45,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsTextAndEspecifyingColumns()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
@@ -58,7 +58,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesAsNonTextAndEspecifyingColumns()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
@@ -71,7 +71,7 @@ namespace XUnitTests
         [Fact]
         public void InsertValuesFromDifferentTypesAndEspecifyingColumns()
         {
-            var query = SQLInsertQueriesBuilder
+            var query = SQLInsertBuilder
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
@@ -86,7 +86,7 @@ namespace XUnitTests
         {
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLInsertQueriesBuilder
+                    SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B")
                     .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
@@ -96,7 +96,7 @@ namespace XUnitTests
             
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLInsertQueriesBuilder
+                    SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B", "C")
                     .As(ColumnTypes.Text, ColumnTypes.NonText)
@@ -106,7 +106,7 @@ namespace XUnitTests
 
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLInsertQueriesBuilder
+                    SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B", "C")
                     .AtColumns("FOO1", "FOO2")
@@ -117,7 +117,7 @@ namespace XUnitTests
 
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => {
-                    SQLInsertQueriesBuilder
+                    SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B")
                     .AtColumns("FOO1", "FOO2", "FOO3")
