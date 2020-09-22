@@ -1,4 +1,4 @@
-namespace SQLQueriesHelper
+namespace SQLQueriesBuilder.Builder
 {
     public enum ColumnTypes
     {

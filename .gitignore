@@ -1,5 +1,5 @@
 .vscode/
-SQLQueriesHelper/bin/
-SQLQueriesHelper/obj/
+SQLQueriesBuilder/bin/
+SQLQueriesBuilder/obj/
 xUnitTests/bin
 xUnitTests/obj

@@ -1,4 +1,6 @@
-namespace SQLQueriesHelper
+using SQLQueriesBuilder.Builder;
+
+namespace SQLQueriesBuilder.FluentInterfaces
 {
     public interface ITypesAdder<T>
     {

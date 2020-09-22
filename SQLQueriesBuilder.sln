@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLQueriesHelper", "SQLQueriesHelper\SQLQueriesHelper.csproj", "{2F9116BE-1059-4504-9852-829A6BA4990B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLQueriesBuilder", "SQLQueriesBuilder\SQLQueriesBuilder.csproj", "{2F9116BE-1059-4504-9852-829A6BA4990B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTests", "XUnitTests\XUnitTests.csproj", "{1152A55E-1859-41D9-80A6-E6799275ACC8}"
 EndProject

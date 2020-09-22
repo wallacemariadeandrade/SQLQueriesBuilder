@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SQLQueriesBuilder.FluentInterfaces;
 
-namespace SQLQueriesHelper
+namespace SQLQueriesBuilder.Builder
 {
     public class SQLInsertQueriesBuilder   
     {

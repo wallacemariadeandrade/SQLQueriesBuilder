@@ -1,4 +1,4 @@
-namespace SQLQueriesHelper
+namespace SQLQueriesBuilder.FluentInterfaces
 {
     public interface IColumnsAdder<T>
     {

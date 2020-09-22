@@ -1,6 +1,6 @@
 using System;
-using SQLQueriesHelper;
 using Xunit;
+using SQLQueriesBuilder.Builder;
 
 namespace XUnitTests
 {

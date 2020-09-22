@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SQLQueriesHelper\SQLQueriesHelper.csproj" />
+    <ProjectReference Include="..\SQLQueriesBuilder\SQLQueriesBuilder.csproj" />
   </ItemGroup>
 
 </Project>
