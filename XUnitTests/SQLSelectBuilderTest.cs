@@ -1,3 +1,5 @@
+using System;
+using SQLQueriesBuilder;
 using SQLQueriesBuilder.Builder;
 using Xunit;
 
@@ -27,6 +29,17 @@ namespace XUnitTests
             var query = SQLSelectBuilder
                 .Select("ID", "Name", "Price")
                 .From("Products")
+                .Build();
+            AssertTrue(query, expected);
+        }
+
+        [Fact]
+        public void SelectAllFromApplyingWhere()
+        {
+            var expected = "SELECT * FROM EMPLOYEES WHERE ANUAL_SALARY > 24000";
+            var query = SQLSelectBuilder
+                .SelectAllFrom("EMPLOYEES")
+                .Where("ANUAL_SALARY", new MajorThan(24000))
                 .Build();
             AssertTrue(query, expected);
         }

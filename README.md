@@ -33,6 +33,12 @@ var selectQuery = SQLSelectBuilder
     .From("Products")
     .Build();
 
+// SELECT * FROM Cars WHERE Price > 12000
+var selectAllWhere = SQLSelectBuilder.
+    .SelectAllFrom("Cars")
+    .Where("Price", new MajorThan(12000))
+    .Build();
+
 ```
 
 ## Versions

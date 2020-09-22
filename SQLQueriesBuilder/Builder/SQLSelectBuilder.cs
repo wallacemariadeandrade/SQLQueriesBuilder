@@ -6,12 +6,12 @@ namespace SQLQueriesBuilder.Builder
 {
     public static class SQLSelectBuilder
     {
-        public static Builder SelectAllFrom(string tableName) => new SimpleSelectWrapper(tableName);
-        public static IFromAdder<Builder> Select(params string[] columns) 
+        public static IWhereFilterWithBuilder<IBuilder> SelectAllFrom(string tableName) => new SimpleSelectWrapper(tableName);
+        public static IFromAdder<IBuilder> Select(params string[] columns) 
             => new ComplexSelectWrapper(columns);
 
         internal class ComplexSelectWrapper 
-            : Builder, IFromAdder<Builder>
+            : IBuilder, IFromAdder<IBuilder>
         {
             private IEnumerable<string> _columns;
             private string _tableName;
@@ -20,23 +20,33 @@ namespace SQLQueriesBuilder.Builder
                 _columns = columns.AsEnumerable();
             }
 
-            public override string Build() => $"SELECT {string.Join(", ", _columns)} FROM {_tableName}";
+            public string Build() => $"SELECT {string.Join(", ", _columns)} FROM {_tableName}";
 
-            public Builder From(string tableName)
+            public IBuilder From(string tableName)
             {
                 _tableName = tableName;
                 return this;
             }
         }
 
-        internal class SimpleSelectWrapper : Builder
+        internal class SimpleSelectWrapper : IWhereFilterWithBuilder<IBuilder>
         {
             private string _tableName;
+            private ITextualCondition _toCondition;
+            private string _comparing;
             internal SimpleSelectWrapper(string tableName)
             {
                 _tableName = tableName;
             }
-            public override string Build() => $"SELECT * FROM {_tableName}";
+            public string Build()
+                => _toCondition == null ? $"SELECT * FROM {_tableName}" : $"SELECT * FROM {_tableName} WHERE {_comparing} {_toCondition.GetCondition}";
+
+            public IBuilder Where(string comparing, ITextualCondition toCondition)
+            {
+                _comparing = comparing;
+                _toCondition = toCondition;
+                return this;
+            }
         }
     }
 }

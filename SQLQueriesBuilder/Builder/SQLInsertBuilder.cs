@@ -7,13 +7,13 @@ namespace SQLQueriesBuilder.Builder
 {
     public static class SQLInsertBuilder   
     {
-        public static IValuesAdder<ITypesAdderWithColumns<Builder>> InsertAt(string tableName)
+        public static IValuesAdder<ITypesAdderWithColumns<IBuilder>> InsertAt(string tableName)
         {
             return new InsertWraper(tableName);
         }
 
         internal class InsertWraper 
-        : Builder, IValuesAdder<ITypesAdderWithColumns<Builder>>, ITypesAdderWithColumns<Builder>
+        : IBuilder, IValuesAdder<ITypesAdderWithColumns<IBuilder>>, ITypesAdderWithColumns<IBuilder>
         {
             private string _tableName;
             private IEnumerable<ColumnTypes> _types;
@@ -25,19 +25,19 @@ namespace SQLQueriesBuilder.Builder
                 _tableName = tableName;
             }
 
-            public Builder As(params ColumnTypes[] types)
+            public IBuilder As(params ColumnTypes[] types)
             {
                 _types = types.AsEnumerable();
                 return this;
             }
 
-            public ITypesAdder<Builder> AtColumns(params string[] columns)
+            public ITypesAdder<IBuilder> AtColumns(params string[] columns)
             {
                 _columns = columns.AsEnumerable();
                 return this;
             }
 
-            public override string Build()
+            public string Build()
             {
                 ValidateArguments();
                 var query = $"INSERT INTO {_tableName}";
@@ -51,7 +51,7 @@ namespace SQLQueriesBuilder.Builder
                 return query.Remove(query.Length - 2) + ")";
             }
 
-            public ITypesAdderWithColumns<Builder> Values(params string[] values)
+            public ITypesAdderWithColumns<IBuilder> Values(params string[] values)
             {
                 _values = values;
                 return this;
