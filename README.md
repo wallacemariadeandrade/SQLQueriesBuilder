@@ -39,6 +39,13 @@ var selectAllWhere = SQLSelectBuilder.
     .Where("Price", new MajorThan(12000))
     .Build();
 
+// SELECT * FROM Users WHERE Age > 20 AND AGE < 30
+var selectAllWhereWithAnd = SQLSelectBuilder
+    .SelectAllFrom("Users")
+    .Where("Age", new MajorThan(20))
+    .And("Age", new LesserThan(30))
+    .Build();
+
 ```
 
 ## Versions
