@@ -38,17 +38,13 @@ namespace SQLQueriesBuilder.Builder
             }
 
             public string Build()
+                => _columns != null ? $"INSERT INTO {_tableName} ({string.Join(", ", _columns)}) VALUES ({string.Join(", ", UpdateValuesToHaveSingleQuotesOnTextTypes())})"
+                    : $"INSERT INTO {_tableName} VALUES ({string.Join(", ", UpdateValuesToHaveSingleQuotesOnTextTypes())})";
+            private IEnumerable<string> UpdateValuesToHaveSingleQuotesOnTextTypes()
             {
                 ValidateArguments();
-                var query = $"INSERT INTO {_tableName}";
-                if(_columns != null) query += $" ({string.Join(", ", _columns)})";
-                query += " VALUES (";
                 for(int i=0; i < _values.Count(); i++)
-                {
-                    var value = _types.ElementAt(i) == ColumnTypes.NonText ? _values.ElementAt(i) : $"'{_values.ElementAt(i)}'";
-                    query += $"{value}, ";
-                }
-                return query.Remove(query.Length - 2) + ")";
+                     yield return _types.ElementAt(i) == ColumnTypes.NonText ? _values.ElementAt(i) : $"'{_values.ElementAt(i)}'";
             }
 
             public ITypesAdderWithColumns<IBuilder> Values(params string[] values)
