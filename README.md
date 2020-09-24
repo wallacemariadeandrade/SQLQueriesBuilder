@@ -64,4 +64,4 @@ v1.0
 
 v2.0
 - SELECT supported
- - WHERE, AND clauses
+  - WHERE, AND clauses
