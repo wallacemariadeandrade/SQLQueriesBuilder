@@ -46,9 +46,22 @@ var selectAllWhereWithAnd = SQLSelectBuilder
     .And("Age", new LesserThan(30))
     .Build();
 
+// SELECT Price, Name FROM Products WHERE Price > 10 AND Price < 20 AND Sector_ID = 10
+var selectWhereWithAnds = SQLSelectBuilder
+    .Select("Price", "Name")
+    .From("Products")
+    .Where("Price", new MajorThan(10))
+    .And("Price", new LesserThan(20))
+    .And("Sector_ID", new EqualsTo(10))
+    .Build();
+
 ```
 
 ## Versions
 
 v1.0
-- Simple inserts queries suppported
+- INSERT supported
+
+v2.0
+- SELECT supported
+-- WHERE, AND clauses

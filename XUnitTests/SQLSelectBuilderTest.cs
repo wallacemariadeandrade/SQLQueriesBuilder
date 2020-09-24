@@ -36,10 +36,10 @@ namespace XUnitTests
         [Fact]
         public void SelectAllFromApplyingWhere()
         {
-            var expected = "SELECT * FROM EMPLOYEES WHERE ANUAL_SALARY > 24000";
+            var expected = "SELECT * FROM EMPLOYEES WHERE ANNUAL_SALARY > 24000";
             var query = SQLSelectBuilder
                 .SelectAllFrom("EMPLOYEES")
-                .Where("ANUAL_SALARY", new MajorThan(24000))
+                .Where("ANNUAL_SALARY", new MajorThan(24000))
                 .Build();
             AssertTrue(query, expected);
         }
@@ -47,10 +47,10 @@ namespace XUnitTests
         [Fact]
         public void SelectAllFromApplyingWhereWithAnd()
         {
-            var expected = "SELECT * FROM EMPLOYEES WHERE ANUAL_SALARY > 24000 AND HIRED_ON > 1990/01/01";
+            var expected = "SELECT * FROM EMPLOYEES WHERE ANNUAL_SALARY > 24000 AND HIRED_ON > 1990/01/01";
             var query = SQLSelectBuilder
                 .SelectAllFrom("EMPLOYEES")
-                .Where("ANUAL_SALARY", new MajorThan(24000))
+                .Where("ANNUAL_SALARY", new MajorThan(24000))
                 .And("HIRED_ON", new AfterThan(new DateTime(1990, 1, 1), "yyyy/MM/dd"))
                 .Build();
             AssertTrue(query, expected);
@@ -59,12 +59,51 @@ namespace XUnitTests
         [Fact]
         public void SelectAllFromApplyingWhereWithAnds()
         {
-            var expected = "SELECT * FROM EMPLOYEES WHERE ANUAL_SALARY > 24000 AND HIRED_ON > 1990/01/01 AND HIRED_ON < 1990/12/01";
+            var expected = "SELECT * FROM EMPLOYEES WHERE ANNUAL_SALARY > 24000 AND HIRED_ON > 1990/01/01 AND HIRED_ON < 1990/12/01";
             var query = SQLSelectBuilder
                 .SelectAllFrom("EMPLOYEES")
-                .Where("ANUAL_SALARY", new MajorThan(24000))
+                .Where("ANNUAL_SALARY", new MajorThan(24000))
                 .And("HIRED_ON", new AfterThan(new DateTime(1990, 1, 1), "yyyy/MM/dd"))
                 .And("HIRED_ON", new BeforeThan(new DateTime(1990, 12, 1), "yyyy/MM/dd"))
+                .Build();
+            AssertTrue(query, expected);
+        }
+
+        [Fact]
+        public void SelectColumnsApplyingWhere()
+        {
+            var expected = "SELECT ID, Name FROM Users WHERE DEPARTMENT_ID = 10";
+            var query = SQLSelectBuilder
+                .Select("ID", "Name")
+                .From("Users")
+                .Where("DEPARTMENT_ID", new EqualsTo(10))
+                .Build();
+            AssertTrue(query, expected);
+        }
+
+        [Fact]
+        public void SelectColumnsApplyingWhereWithAnd()
+        {
+            var expected = "SELECT ID, Name FROM Users WHERE DEPARTMENT_ID = 10 AND ANNUAL_SALARY > 24000";
+            var query = SQLSelectBuilder
+                .Select("ID", "Name")
+                .From("Users")
+                .Where("DEPARTMENT_ID", new EqualsTo(10))
+                .And("ANNUAL_SALARY", new MajorThan(24000))
+                .Build();
+            AssertTrue(query, expected);
+        }
+
+        [Fact]
+        public void SelectColumnsApplyingWhereWithAnds()
+        {
+            var expected = "SELECT ID, Name FROM Users WHERE DEPARTMENT_ID = 10 AND ANNUAL_SALARY > 24000 AND HIRED_ON > 1990/01/01";
+            var query = SQLSelectBuilder
+                .Select("ID", "Name")
+                .From("Users")
+                .Where("DEPARTMENT_ID", new EqualsTo(10))
+                .And("ANNUAL_SALARY", new MajorThan(24000))
+                .And("HIRED_ON", new AfterThan(new DateTime(1990, 1, 1), "yyyy/MM/dd"))
                 .Build();
             AssertTrue(query, expected);
         }
