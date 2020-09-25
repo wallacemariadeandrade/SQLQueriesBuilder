@@ -13,6 +13,8 @@ namespace SQLQueriesBuilder
             _format = dateFormat;
         }
 
-        public string GetCondition => $"< {_date.ToString(_format)}";
+        public string OperatorAsText => "<";
+
+        public string ValueAsText => _date.ToString(_format);
     }
 }

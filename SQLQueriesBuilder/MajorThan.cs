@@ -7,6 +7,8 @@ namespace SQLQueriesBuilder
         {
             _value = value;
         }
-        public string GetCondition => $"> {_value}";
+        public string OperatorAsText => $">";
+
+        public string ValueAsText => _value.ToString();
     }
 }

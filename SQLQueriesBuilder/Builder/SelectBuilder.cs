@@ -46,7 +46,7 @@ namespace SQLQueriesBuilder.Builder
             public string Build() 
             {
                 if (_comparingTo == null) return $"SELECT {string.Join(", ", _columns)} FROM {_tableName}";
-                var conditions = string.Join(" AND ", _comparingTo.Select(x => $"{x.Item1} {x.Item2.GetCondition}")); // AA > B and C > d and D = F and AA < F
+                var conditions = string.Join(" AND ", _comparingTo.Select(x => $"{x.Item1} {x.Item2.OperatorAsText} {x.Item2.ValueAsText}")); // AA > B and C > d and D = F and AA < F
                 return $"SELECT {string.Join(", ", _columns)} FROM {_tableName} WHERE {conditions}";
             }
         }

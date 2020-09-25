@@ -2,6 +2,7 @@ namespace SQLQueriesBuilder
 {
     public interface ITextualCondition
     {
-        string GetCondition { get; }
+        string OperatorAsText { get; }
+        string ValueAsText { get; }
     }
 }

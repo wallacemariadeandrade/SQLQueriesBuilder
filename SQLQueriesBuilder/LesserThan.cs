@@ -9,6 +9,8 @@ namespace SQLQueriesBuilder
             _to = to;
         }
 
-        public string GetCondition => $"< {_to}";
+        public string OperatorAsText => "<";
+
+        public string ValueAsText => _to.ToString();
     }
 }

@@ -4,6 +4,6 @@ namespace SQLQueriesBuilder.FluentInterfaces
 {
     public interface ITypesAdder<T>
     {
-        T As(params ColumnTypes[] types);
+        T As(params DataType[] types);
     }
 }

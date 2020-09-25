@@ -1,6 +1,6 @@
 namespace SQLQueriesBuilder.Builder
 {
-    public enum ColumnTypes
+    public enum DataType
     {
         Text, NonText
     }

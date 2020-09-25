@@ -11,7 +11,7 @@ namespace SQLQueriesBuilder.Builder
         : IBuilder, IValuesAdder<ITypesAdderWithColumns<IBuilder>>, ITypesAdderWithColumns<IBuilder>
         {
             private string _tableName;
-            private IEnumerable<ColumnTypes> _types;
+            private IEnumerable<DataType> _types;
             private IEnumerable<string> _columns;
             private IEnumerable<string> _values;
 
@@ -20,7 +20,7 @@ namespace SQLQueriesBuilder.Builder
                 _tableName = tableName;
             }
 
-            public IBuilder As(params ColumnTypes[] types)
+            public IBuilder As(params DataType[] types)
             {
                 _types = types.AsEnumerable();
                 return this;
@@ -39,7 +39,7 @@ namespace SQLQueriesBuilder.Builder
             {
                 ValidateArguments();
                 for(int i=0; i < _values.Count(); i++)
-                     yield return _types.ElementAt(i) == ColumnTypes.NonText ? _values.ElementAt(i) : $"'{_values.ElementAt(i)}'";
+                     yield return _types.ElementAt(i) == DataType.NonText ? _values.ElementAt(i) : $"'{_values.ElementAt(i)}'";
             }
 
             public ITypesAdderWithColumns<IBuilder> Values(params string[] values)

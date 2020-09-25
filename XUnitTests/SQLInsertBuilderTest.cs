@@ -12,7 +12,7 @@ namespace XUnitTests
             var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
-                .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
+                .As(DataType.Text, DataType.Text, DataType.Text)
                 .Build();
             var expected = "INSERT INTO Foo VALUES ('A', 'B', 'C')";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -24,7 +24,7 @@ namespace XUnitTests
             var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
-                .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
+                .As(DataType.NonText, DataType.NonText, DataType.NonText)
                 .Build();
             var expected = "INSERT INTO Foo VALUES (A, B, C)";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -36,7 +36,7 @@ namespace XUnitTests
             var query = SQLInsertBuilder
                 .InsertAt("Foo")
                 .Values("A", "B", "C")
-                .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
+                .As(DataType.Text, DataType.NonText, DataType.Text)
                 .Build();
             var expected = "INSERT INTO Foo VALUES ('A', B, 'C')";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -49,7 +49,7 @@ namespace XUnitTests
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
-                .As(ColumnTypes.Text, ColumnTypes.Text, ColumnTypes.Text)
+                .As(DataType.Text, DataType.Text, DataType.Text)
                 .Build();
             var expected = "INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES ('fOO1', 'FOO2', 'FOO3')";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -62,7 +62,7 @@ namespace XUnitTests
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
-                .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
+                .As(DataType.NonText, DataType.NonText, DataType.NonText)
                 .Build();
             var expected = "INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, FOO3)";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -75,7 +75,7 @@ namespace XUnitTests
                 .InsertAt("TABLE")
                 .Values("fOO1", "FOO2", "FOO3")
                 .AtColumns("COLUMN1", "COLUMN2", "COLUMN3")
-                .As(ColumnTypes.NonText, ColumnTypes.NonText, ColumnTypes.NonText)
+                .As(DataType.NonText, DataType.NonText, DataType.NonText)
                 .Build();
             var expected = "INSERT INTO TABLE (COLUMN1, COLUMN2, COLUMN3) VALUES (fOO1, FOO2, FOO3)";
             Assert.True(query.Equals(expected), $"Error: '{query}' is different from '{expected}'");
@@ -89,7 +89,7 @@ namespace XUnitTests
                     SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B")
-                    .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
+                    .As(DataType.Text, DataType.NonText, DataType.Text)
                     .Build();
                 }
             );
@@ -99,7 +99,7 @@ namespace XUnitTests
                     SQLInsertBuilder
                     .InsertAt("Foo")
                     .Values("A", "B", "C")
-                    .As(ColumnTypes.Text, ColumnTypes.NonText)
+                    .As(DataType.Text, DataType.NonText)
                     .Build();
                 }
             );
@@ -110,7 +110,7 @@ namespace XUnitTests
                     .InsertAt("Foo")
                     .Values("A", "B", "C")
                     .AtColumns("FOO1", "FOO2")
-                    .As(ColumnTypes.Text, ColumnTypes.NonText, ColumnTypes.Text)
+                    .As(DataType.Text, DataType.NonText, DataType.Text)
                     .Build();
                 }
             );
@@ -121,7 +121,7 @@ namespace XUnitTests
                     .InsertAt("Foo")
                     .Values("A", "B")
                     .AtColumns("FOO1", "FOO2", "FOO3")
-                    .As(ColumnTypes.Text, ColumnTypes.NonText)
+                    .As(DataType.Text, DataType.NonText)
                     .Build();
                 }
             );
